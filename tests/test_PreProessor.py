@@ -12,3 +12,8 @@ def environment():
 def test_include_with_whitespace(environment):
     template = environment.get_template("002.j2")
     assert template.render() == "example:\n    hello:\n        world"
+
+
+def test_trim_blocks(environment):
+    template = environment.get_template("003.j2")
+    assert template.render() == "example:\n    hello: world"

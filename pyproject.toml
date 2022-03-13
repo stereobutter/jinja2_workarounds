@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "jinja2_better_includes"
+version = "0.1.0"
+description = "Jinja2 Extension for includes with correct indentation"
+authors = ["Sascha Desch <sascha.desch@hotmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+Jinja2 = "^3.0.3"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

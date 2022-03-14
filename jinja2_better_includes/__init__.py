@@ -13,7 +13,7 @@ def _improved_include_statement(block_start, block_end):
                 (?P<statement>
                     \s* include \b   # include keyword
                     \s*? .*?  # fluff
-                    with \s indentation  # new 'with indentation' option
+                    indent \s content  # new 'with indentation' option
                     \s*? .*? # fluff
                 )
                 (?P<block_end_modifier> [\+|-]?)
@@ -37,7 +37,7 @@ class PreProcessor(Extension):
 
         def add_indentation_filter(match):
             line_content_before_statement = match.group(1)
-            statement = match.group('statement').replace('with indentation', '')  # strip 'with indentation' directive
+            statement = match.group('statement').replace('indent content', '')  # strip 'with indentation' directive
 
             # guard against invalid use of improved include statement
             if line_content_before_statement is not None:

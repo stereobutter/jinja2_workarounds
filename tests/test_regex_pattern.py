@@ -6,14 +6,14 @@ from jinja2_better_includes import _improved_include_statement
 @pytest.mark.parametrize("tags", [("{%", "%}"), ("<<", ">>"), ("|$", "$|")])
 @pytest.mark.parametrize("statement",
     [
-        '{start} include "foo.txt" with indentation {end}', 
-        "{start} include 'foo.txt' with indentation {end}",
-        "{start}include'foo.txt'with indentation{end}"
-        "{start}  include  ['foo.txt', 'bar.txt'] ignore missing with indentation {end}",
-        "{start}  include  ['foo.txt', 'bar.txt'] ignore missing with indentation with context {end}",
-        "     {start}  include  'foo.txt' with indentation {end}",
-        "  ...   {start}  include  'foo.txt' with indentation {end} .. ",
-        "{start}- include 'foo.txt' with indentation +{end}"
+        '{start} include "foo.txt" indent content {end}', 
+        "{start} include 'foo.txt' indent content {end}",
+        "{start}include'foo.txt'indent content{end}"
+        "{start}  include  ['foo.txt', 'bar.txt'] ignore missing indent content {end}",
+        "{start}  include  ['foo.txt', 'bar.txt'] ignore missing indent content with context {end}",
+        "     {start}  include  'foo.txt' indent contentn {end}",
+        "  ...   {start}  include  'foo.txt' indent content {end} .. ",
+        "{start}- include 'foo.txt' indent content +{end}"
     ]
 )
 def test_regex_matches(tags, statement):

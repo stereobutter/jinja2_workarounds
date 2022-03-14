@@ -1,12 +1,12 @@
 import pytest
 from tempfile import NamedTemporaryFile
 from jinja2 import Environment, FileSystemLoader
-from jinja2_workarounds import PreProcessor
+from jinja2_workarounds import MultiLineInclude
 
 
 @pytest.fixture
 def environment():
-    yield Environment(loader=FileSystemLoader('./tests/templates'), extensions=[PreProcessor])
+    yield Environment(loader=FileSystemLoader('./tests/templates'), extensions=[MultiLineInclude])
 
 
 def test_include_with_whitespace(environment):

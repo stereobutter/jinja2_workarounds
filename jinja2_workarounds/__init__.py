@@ -25,7 +25,7 @@ def _improved_include_statement(block_start, block_end):
         flags=re.MULTILINE|re.VERBOSE)
 
 
-class PreProcessor(Extension):
+class MultiLineInclude(Extension):
 
     def preprocess(self, source, name, filename=None):
         env: Environment = self.environment

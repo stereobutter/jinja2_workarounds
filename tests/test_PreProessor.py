@@ -1,7 +1,7 @@
 import pytest
 from tempfile import NamedTemporaryFile
 from jinja2 import Environment, FileSystemLoader
-from jinja2_better_includes import PreProcessor
+from jinja2_workarounds import PreProcessor
 
 
 @pytest.fixture

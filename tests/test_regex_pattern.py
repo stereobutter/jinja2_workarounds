@@ -1,6 +1,6 @@
 import pytest
 import re
-from jinja2_better_includes import _improved_include_statement
+from jinja2_workarounds import _improved_include_statement
 
 
 @pytest.mark.parametrize("tags", [("{%", "%}"), ("<<", ">>"), ("|$", "$|")])

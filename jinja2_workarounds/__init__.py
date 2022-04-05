@@ -41,8 +41,8 @@ class MultiLineInclude(Extension):
 
             # guard against invalid use of improved include statement
             if line_content_before_statement is not None:
-                # line before include statement must be indentation only
-                if not line_content_before_statement.isspace():
+                # line before include statement must be empty or indentation only
+                if not line_content_before_statement == '' and not line_content_before_statement.isspace():
                     start_position = match.start(0)
                     lineno = len(re_newline.findall(source, 0, start_position)) + 1
                     raise TemplateSyntaxError(

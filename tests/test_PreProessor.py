@@ -17,3 +17,8 @@ def test_include_with_whitespace(environment):
 def test_trim_blocks(environment):
     template = environment.get_template("003.j2")
     assert template.render() == "example:\n    hello: world"
+
+
+def test_include_no_leadin(environment):
+    template = environment.get_template("no-whitespace.j2")
+    assert template.render() == "hello:\n    world"

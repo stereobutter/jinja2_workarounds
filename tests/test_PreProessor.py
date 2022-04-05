@@ -1,6 +1,7 @@
 import pytest
 from tempfile import NamedTemporaryFile
 from jinja2 import Environment, FileSystemLoader
+from jinja2.exceptions import TemplateSyntaxError
 from jinja2_workarounds import MultiLineInclude
 
 
@@ -22,3 +23,10 @@ def test_trim_blocks(environment):
 def test_include_no_leadin(environment):
     template = environment.get_template("no-whitespace.j2")
     assert template.render() == "hello:\n    world"
+
+
+def test_include_bad_leadin(environment):
+    with pytest.raises(TemplateSyntaxError) as excinfo:
+            template = environment.get_template("bad-leadin.j2")
+
+    assert "line contains non-whitespace characters before include statement" in str(excinfo.value)

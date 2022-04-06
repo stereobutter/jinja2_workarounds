@@ -41,8 +41,8 @@ class MultiLineInclude(Extension):
 
             # guard against invalid use of improved include statement
             if line_content_before_statement is not None:
-                # line before include statement must be indentation only
-                if not line_content_before_statement.isspace():
+                # line before include statement must be empty or indentation only
+                if not line_content_before_statement == '' and not line_content_before_statement.isspace():
                     start_position = match.start(0)
                     lineno = len(re_newline.findall(source, 0, start_position)) + 1
                     raise TemplateSyntaxError(
@@ -56,7 +56,10 @@ class MultiLineInclude(Extension):
             block_start_modifier = match.group('block_start_modifier') or ''
             block_end_modifier = match.group('block_end_modifier') or ''
 
-            start_filter = indentation + f'{block_start + block_start_modifier} filter indent({len(indentation)}) -{block_end}'
+            # Note that 'indentation' consists only of whitespace, so
+            # there's no Bobby Tables here where it is trying to be a
+            # Jinja2 command
+            start_filter = indentation + f'{block_start + block_start_modifier} filter indent("{indentation}") -{block_end}'
             include_statement = indentation + f'{block_start} {statement} {block_end}'
             end_filter = indentation + f'{block_start}- endfilter {block_end_modifier + block_end}'
 

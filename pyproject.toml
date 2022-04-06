@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "A jinja2 extension for includes with correct indentation"
 authors = ["Sascha Desch <sascha.desch@hotmail.com>"]
 license = "MIT"
-readme = "README.MD"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.7"
